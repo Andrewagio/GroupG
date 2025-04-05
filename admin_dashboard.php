@@ -52,6 +52,20 @@ if (!isset($_SESSION['username']) || $_SESSION['access'] != 'Admin') {
              
             </a>
           </li> 
+		    <li class="nav-item">
+            <a class="nav-link" href="messages.php"style="color:white">
+              <i class="typcn typcn-device-desktop menu-icon"></i>
+              <span class="menu-title">Messages</span>
+             
+            </a>
+          </li> 
+		    <li class="nav-item">
+            <a class="nav-link" href="logout.php"style="color:white">
+              <i class="typcn typcn-device-desktop menu-icon"></i>
+              <span class="menu-title">Logout</span>
+             
+            </a>
+          </li> 
         </ul>
       </nav>
  
@@ -59,6 +73,7 @@ if (!isset($_SESSION['username']) || $_SESSION['access'] != 'Admin') {
         <div class="content-wrapper">
 
         <div class="card-body">
+		<a href="newadmin.php"> + Create new admin</a>
                  <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -67,11 +82,12 @@ if (!isset($_SESSION['username']) || $_SESSION['access'] != 'Admin') {
                          <th>Gender</th>
                         <th>Date of birth</th>
                         <th>Username</th>
-                            <th>Email</th>
+                         <th>Email</th>
                               
                      <th>Contact</th>
 					 <th>Date registered</th>
-                   
+					 <th>Access</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -91,7 +107,10 @@ while($row = $result->fetch_array()){?>
                                             <td><?php echo $row['contact']; ?></td>
                     <td><?php echo $row['date']; ?>
                     </td>
-                    
+					<td><?php echo $row['access']; ?>
+                    </td>
+                    <td><a href="delete.php?id=<?php echo md5($row['id']);?>" style="color:red;">Remove user</a>
+                    </td>
                   </tr>
                
                         <?php
